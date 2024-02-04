@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('aduans', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('slug')->unique();
+            $table->string('image');
+            $table->unsignedBigInteger('id_kecamatan');
+            $table->string('kecamatan');
+            $table->string('desa_kelurahan');
+            $table->text('isi_aduan');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
     }
