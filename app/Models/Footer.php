@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Footer extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['platform', 'nama_halaman', 'link_url'];
 }
