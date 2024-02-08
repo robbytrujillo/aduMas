@@ -19,7 +19,14 @@ class PostResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'content' => $this->content,
-            
+            'description' => $this->description,
+            'created_at' => $this->created_at->format('d M Y'),
+            'slug' => $this->slug,
+            'views_count' => $this->views_count,
+            'image' => asset('/storage/posts/'. $this->image),
+            'user' => new UserResource($this->whenLoaded('user')),
+            'categories' => new CategoryResource($this->whenLoaded('category')),
+            'tags' => new TagResource::collection($this->whenLoaded('tags')),
         ];
     }
 }
