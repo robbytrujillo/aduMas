@@ -15,7 +15,27 @@ class FooterService {
         $phoneFooter = Footer::where('platform', 'Phone')->first();
         $addressFooter = Footer::where('platform', 'Address')->first();
         $faqsFooter = Footer::where('platform', 'Faqs')->first();
-        $facebookFooter = Footer::where('platform', 'Facebook')->first();
+        $privacyFooter = Footer::where('platform', 'Privacy')->first();
+
+        // Structur Data
+        $footerData = [
+            'facebook' => [
+                'platform' =>  $facebookFooter->platform,
+                'nama_halaman' => $facebookFooter->nama_halaman,
+                'link_url' => $facebookFooter->link_url
+            ],
+            'twitter' => [
+                'platform' =>  $twitterFooter->platform,
+                'nama_halaman' => $twitterFooter->nama_halaman,
+                'link_url' => $twitterFooter->link_url
+            ],
+            'twitter' => [
+                'platform' =>  $twitterFooter->platform,
+                'nama_halaman' => $twitterFooter->nama_halaman,
+                'link_url' => $twitterFooter->link_url
+            ],
+
+        ]
 
     }
 }
