@@ -59,11 +59,9 @@ class PostPolicy
     }
 
     /**
-     * Determine whether the user can permanetly delete the models.
+     * Determine whether the user can permanently delete the models.
      */
     public function forceDelete(User $user, Post $post): bool {
         // 
     }
-
-
 }
