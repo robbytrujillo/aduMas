@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Tightenco\Ziggy\Ziggy;
 use Inertia\Middleware;
 
+
 class HandleInertiaRequests extends Middleware
 {
     /**
@@ -20,7 +21,7 @@ class HandleInertiaRequests extends Middleware
      * Determine the current asset version.
      */
     public function version(Request $request): string|null
-    {
+    {https://progate.com/courses?register=true
         return parent::version($request);
     }
 
