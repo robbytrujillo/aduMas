@@ -83,5 +83,60 @@ class AduanController extends Controller
             'desa_kelurahan' => $request->selectedVillageName,
             'isi_aduan' => $request->isi_aduan,
         ]));
-
+        AduanStatus::create([
+            'aduan_id' => $aduan->id,
+            'status' => "Belum Ditangani",
+            'user_id' => auth()->user()->id,
+            'daftar_desa' => $validated['selectedVillageName'],
+            'keterangan' => 'Laporan sudah diterima dan akan diteruskan kepada petugas desa bersangkutan'
+        ]);
+        $aduan->tags()->attach($validated['tags']);
+        return back();
     }
+
+    public function updateStatus(Request $request, $id) {
+        $request->validate([
+            'status' => 'required|in:Belum Ditangani,Verivikasi,Diproses,Selesai',
+            'selectedVillage' => 'required',
+            'keterangan' => 'nullable',   
+        ]);
+
+        AduanStatus::created([
+            'aduan_id' => $id,
+            'user_id' => auth()->user()->id,
+            'status' => $request->status,
+            'daftar_desa' => $request->selectedVillage,
+            'keterangan' => $request->input('keterangan', '-'),
+        ]);
+        return to_route('aaduan.index');
+    }
+
+    public function show($slug) {
+        $aduan = Aduan::with('user', 'status', 'tags')->where('slug', $slug)->first();
+        foreach ($aduan->status as $status) {
+            $user = User::find($status->user_id);
+            $status->user = $user;
+        }
+
+        if ($aduan) {
+            $popularAduans = Aduan::orderBy('created_at', 'desc')
+                ->whereNotIn('id', [$aduan->id])
+                ->take(4)
+                ->get();
+            $footerData = FooterService::getFooterData();
+            return Inertia::render('Aduan/Detail', [
+                'aduan' => new AduanResource($aduan),
+                'popularAduans' => AduanResource::collection($popularAduans),
+                'footerData' => $footerData,
+            ]);
+        } else {
+
+        }
+    }
+
+    public function destroy(Aduan $aduan) {
+        $this->authorize('delete', $aduan);
+        $aduan->delete();
+        return back();
+    }
+}
