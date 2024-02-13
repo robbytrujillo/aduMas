@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\AduanController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
@@ -28,6 +29,8 @@ Route::get('/', function () {
 
 Route::middleware(['auth', 'role:admin|moderator'])->prefix('dashboard')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('admin.index');
+    Route::resource('/aduan', AduanController::class);
+    Route::post('/aduan/{id}/store-status', [AduanController::class, 'updateStatus'])->name('aduan.store_status');
 });
 
 // Route::get('/dashboard', function () {
