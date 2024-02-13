@@ -15,5 +15,14 @@ use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
-    //
+    public function index(): Response {
+        $perPage = request('perPage') ?: 5;
+        $categories = Category::query()
+            ->when(request('search'), function($query, $search) {
+                $query->where('name', 'like', "%{$search}%");
+            })
+            ->paginate($perPage)
+            ->appends(request()->query());
+
+    }
 }
