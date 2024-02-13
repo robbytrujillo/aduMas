@@ -130,7 +130,6 @@ class AduanController extends Controller
                 'footerData' => $footerData,
             ]);
         } else {
-
         }
     }
 
