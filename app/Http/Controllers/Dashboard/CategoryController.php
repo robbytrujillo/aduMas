@@ -25,7 +25,7 @@ class CategoryController extends Controller
             ->paginate($perPage)
             ->appends(request()->query());
 
-        $categories = CategoryResponse::collection($categories);
+        $categories = CategoryResource::collection($categories);
         
         $filters = request()->only(['search', 'perPage']);
 
@@ -53,5 +53,36 @@ class CategoryController extends Controller
             // return success with Api Resource
             return redirect()->route('categories.index');
         }
+    }
+
+    public function edit(Category $category): Response {
+        $this->authorize('update', $category);
+        return Inertia::render('Admin/Categories/Edit', [
+            'category' => new CategoryResource($category)
+        ]);
+    }
+
+    public function update(Request $request, Category $category): RedirectResponse {
+        $category->name = $request->name;
+
+        $category->slug = Str::slug($request->name, '-');
+        if ($request->file('image') && $request->file('image')->isValid()) {
+            Storage::disk('local')->delete('public/categories/' .basename($category->image));
+
+            $image = $request->file('image');
+            $image->storeAs('public/categories', $image->hashName());
+            $category->image = $image->hashName();
+        }
+
+        $category->save();
+
+        return redirect()->route('categories.index');
+    }
+
+    public function destroy(Category $category) {
+        $this->authorize('delete', $category);
+        Storage::delete($category->image);
+        $category->delete();
+        return back();
     }
 }
