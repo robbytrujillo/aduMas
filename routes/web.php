@@ -3,6 +3,7 @@
 use App\Http\Controllers\Dashboard\AduanController;
 use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Dashboard\FooterController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -33,6 +34,8 @@ Route::middleware(['auth', 'role:admin|moderator'])->prefix('dashboard')->group(
     Route::resource('/aduan', AduanController::class);
     Route::post('/aduan/{id}/store-status', [AduanController::class, 'updateStatus'])->name('aduan.store_status');
     Route::resource('/categories', CategoryController::class);
+    Route::get('/footer', [FooterController::class, 'edit'])->name('footer.edit');
+    Route::post('/update-footers', [FooterController::class, 'updateFooters']);
 });
 
 // Route::get('/dashboard', function () {

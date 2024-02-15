@@ -26,7 +26,7 @@ class PostResource extends JsonResource
             'image' => asset('/storage/posts/'. $this->image),
             'user' => new UserResource($this->whenLoaded('user')),
             'categories' => new CategoryResource($this->whenLoaded('category')),
-            'tags' => new TagResource::collection($this->whenLoaded('tags')),
+            'tags' => TagResource::collection($this->whenLoaded('tags')),
         ];
     }
 }
