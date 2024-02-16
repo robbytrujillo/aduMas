@@ -4,6 +4,7 @@ use App\Http\Controllers\Dashboard\AduanController;
 use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\FooterController;
+use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +29,8 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
+
+Route::get('/', [HomeController::class, 'home'])->name('home');
 
 Route::middleware(['auth', 'role:admin|moderator'])->prefix('dashboard')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('admin.index');

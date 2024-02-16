@@ -12,7 +12,7 @@ use App\Http\Resources\FooterResource;
 class FooterController extends Controller
 {
     public function edit(): Response {
-        $footer = Footer::all();
+        $footers = Footer::all();
         $formattedFooters = FooterResource::collection($footers);
         return Inertia::render('Admin/Footer/Index', ['footers' => $formattedFooters]);
     }
