@@ -5,6 +5,7 @@ use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\FooterController;
 use App\Http\Controllers\Dashboard\HomeController;
+use App\Http\Controllers\Dashboard\PermissionController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -39,6 +40,7 @@ Route::middleware(['auth', 'role:admin|moderator'])->prefix('dashboard')->group(
     Route::resource('/categories', CategoryController::class);
     Route::get('/footer', [FooterController::class, 'edit'])->name('footer.edit');
     Route::post('/update-footers', [FooterController::class, 'updateFooters']);
+    Route::resource('/permissions', PermissionController::class);
 });
 
 // Route::get('/dashboard', function () {
