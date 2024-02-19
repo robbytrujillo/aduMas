@@ -6,6 +6,7 @@ use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\FooterController;
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\PermissionController;
+use App\Http\Controllers\Dashboard\PostController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -41,6 +42,18 @@ Route::middleware(['auth', 'role:admin|moderator'])->prefix('dashboard')->group(
     Route::get('/footer', [FooterController::class, 'edit'])->name('footer.edit');
     Route::post('/update-footers', [FooterController::class, 'updateFooters']);
     Route::resource('/permissions', PermissionController::class);
+    Route::resource('/post', PostController::class);
 });
+
+/*
+|--------------------------------------------------------------------------
+| Home Routes
+|--------------------------------------------------------------------------
+|
+*/
+Route::get('/', [HomeController::class, 'home'])->name('home');
+Route::get('/poststag/{slug}', [PostController::class, 'postByTag'])->name('posts.tag');
+Route::get('/postscategory/{slug}', [PostController::class, 'postByCategory'])->name('posts.category');
+Route::get('/posts/{slug}', [PostController::class, 'show'])->name('posts.detail');
 
 require __DIR__.'/auth.php';
