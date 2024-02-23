@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Spatie\Permission\Models\Permission;
-// use Illuminate\Http\Request;
+use Illuminate\Http\Request;
 
 class RevokePermissionFromUserController extends Controller
 {
