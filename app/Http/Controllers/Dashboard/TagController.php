@@ -47,5 +47,47 @@ class TagController extends Controller
         return redirect()->route('tags.index');
     }
 
-    
+    public function edit(Tag $tag): Response {
+        $this->authorize('update', $tag);
+        return Inertia::render('Admin/Tags/Edit', [
+            'tag' => new TagResource($tag)
+        ]);
+    } 
+
+    public function update(StoreTagRequest $request, Tag $tag): RedirectResponse {
+        $this->authorize('update', $tag);
+
+        $validatedData = $request->validated();
+        $validatedData['slug'] = Str::slug($validatedData['name'], '-');
+        
+        $tag->update($validatedData);
+
+        return to_route('tags.index');
+    }
+
+    public function show($slug) {
+        $tag = Tag::where('slug', $slug)->first();
+
+        if ($tag) {
+            $aduans = Aduan::with('user', 'status', 'tags')
+                ->whereHas('tags', function ($query) use ($tag) {
+                    $query->where('tags.id', $tag->id);
+                })->paginte(10);
+
+            $footerData = FooterService::getFooterData();
+            return Inertia::render('Tags/IndexTags', [
+                'tag' => new TagResource($tag),
+                'aduans' => AduanWithLastStatusResource::collection($aduans),
+                'footerData' => $footerData,
+            ]);
+        } else {
+        }
+    }
+
+    public function destroy(Tag $tag) {
+        $this->authorize('delete', $tag);
+        $tag->delete();
+        return back();
+    }
 }
+
