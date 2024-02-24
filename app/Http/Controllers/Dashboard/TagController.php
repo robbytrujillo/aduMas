@@ -46,4 +46,6 @@ class TagController extends Controller
 
         return redirect()->route('tags.index');
     }
+
+    
 }
