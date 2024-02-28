@@ -40,6 +40,12 @@ Route::get('/', function () {
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
 
+/*
+|--------------------------------------------------------------------------
+| Dashboard Routes Admin dan Moderator
+|--------------------------------------------------------------------------
+|
+*/
 Route::middleware(['auth', 'role:admin|moderator'])->prefix('dashboard')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('admin.index');
     Route::resource('/aduan', AduanController::class);
@@ -55,7 +61,20 @@ Route::middleware(['auth', 'role:admin|moderator'])->prefix('dashboard')->group(
     Route::resource('/roles', RoleController::class);
     Route::resource('/tags', TagController::class);
     Route::resource('/users', UserController::class);
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');
 });
+
+/*
+|--------------------------------------------------------------------------
+| Dashboard Routes Untuk User
+|--------------------------------------------------------------------------
+|
+*/
+Route::middleware(['auth', 'role:user'])->prefix('/dashboard')->group(function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('admin.index');
+}
 
 /*
 |--------------------------------------------------------------------------
