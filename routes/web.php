@@ -74,7 +74,11 @@ Route::middleware(['auth', 'role:admin|moderator'])->prefix('dashboard')->group(
 */
 Route::middleware(['auth', 'role:user'])->prefix('/dashboard')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('admin.index');
-}
+    Route::get('/aduanuser', [AduanController::class, 'indexUser'])->name('aduan.user');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+});
 
 /*
 |--------------------------------------------------------------------------
@@ -83,8 +87,12 @@ Route::middleware(['auth', 'role:user'])->prefix('/dashboard')->group(function (
 |
 */
 Route::get('/', [HomeController::class, 'home'])->name('home');
+Route::post('/', [AduanController::class, 'store'])->name('aduan.store');
+Route::get('aduan/{slug}', [AduanController::class, 'show'])->name('aduan.detail');
+Route::get('/tags/{slug}', [TagController::class, 'show'])->name('tags.show');
 Route::get('/poststag/{slug}', [PostController::class, 'postByTag'])->name('posts.tag');
 Route::get('/postscategory/{slug}', [PostController::class, 'postByCategory'])->name('posts.category');
 Route::get('/posts/{slug}', [PostController::class, 'show'])->name('posts.detail');
+Route::post('/aduans/{aduan}/update-status', [AduanController::class, 'updateStatus'])->name('aduans.updateStatus');
 
 require __DIR__.'/auth.php';
