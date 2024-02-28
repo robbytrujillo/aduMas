@@ -12,6 +12,7 @@ use App\Http\Controllers\Dashboard\RevokePermissionFromRoleController;
 use App\Http\Controllers\Dashboard\RevokePermissionFromUserController;
 use App\Http\Controllers\Dashboard\RoleController;
 use App\Http\Controllers\Dashboard\TagController;
+use App\Http\Controllers\Dashboard\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
@@ -53,6 +54,7 @@ Route::middleware(['auth', 'role:admin|moderator'])->prefix('dashboard')->group(
     Route::delete('/users/{user}/permissions/{permission}', RevokePermissionFromUserController::class)->name('users.permissions.destroy');
     Route::resource('/roles', RoleController::class);
     Route::resource('/tags', TagController::class);
+    Route::resource('/users', UserController::class);
 });
 
 /*
