@@ -4,33 +4,62 @@
         aria-label="Related articles"
         class="py-8 bg-white lg:py-24 dark:bg-gray-900"
     >
-        <div class="max-w-screen-xl px-4 py-8 mx-auto lg:py-16">
+        <div class="max-w-screen-xl px-4 mx-auto">
             <h2
                 class="mb-2 text-3xl font-extrabold leading-tight tracking-tight text-gray-900 lg:text-center dark:text-white md:text-4xl"
             >
-                Posts Categories
+                Aduan Masyarakat
             </h2>
             <p
                 class="mb-1 text-lg font-normal text-gray-500 dark:text-gray-400 lg:text-center lg:text-xl lg:px-64 lg:mb-16"
             >
-                Daftar categories Posts
+                Berikut ini merupakan beberapa aduan terbaru dari masyarakat.
             </p>
             <div
-                v-if="categories.length > 0"
-                class="space-y-4 sm:grid sm-grid-cols-2 lg:grid-cols-4 sm:gap-4 xl:gap-8 sm:space-y-0 md:mt-12"
+                v-if="aduans.length > 0"
+                class="grid gap-12 sm:grid-cols-2 lg:grid-cols-4"
             >
                 <Link
-                    :href="route('posts.category', { slug: category.slug })"
-                    v-for="category in categories"
-                    :key="category.id"
-                    class="block px-8 py-12 text-center bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-700 dark:border-gray-600 hover:shadow-lg dark:hover:shadow-lg-light">
-                    <img src="category.image" :alt="category.name" class="w-12 h-12 mx-auto"/>
-                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mt-3.5">{{ category.name }}</h3>               
+                    v-for="aduan is aduans"
+                    :key="aduan.id"
+                    :href="route('aduan.detail', { slug: aduan.slug })"
+                    class="overflow-hidden transition rounded-lg shadow hover:shadow-lg"
+                >
+                    <img
+                        alt="Office"
+                        :src="aduan.img"
+                        class="object-contain w-full h-56"
+                    />
+
+                    <div class="p-4 bg-white sm:p-6">
+                        <time
+                            datetime="2022-10-10"
+                            class="block text-sm text-gray-500"
+                        >
+                            {{ aduan.desa_kelurahan }}, {{ aduan.created_at }}
+                        </time>
+
+                        <Link
+                            :href="route('aduan.detail', { slug: aduan.slug })"
+                        >
+                            <h3 class="mt-0.5 text-lg text-gray-900">
+                                {{ aduan.title }}
+                            </h3>
+                        </Link>
+
+                        <p
+                            class="mt-2 text-sm text-gray-500 line-clamp-3/relaxed"
+                        >
+                            {{ aduan.isi_aduan }}
+                        </p>
+                    </div>
                 </Link>
             </div>
             <div v-else>
-                <p class="text-lg text-gray-500 dark:text-gray-400 lg:text-center lg:text-xl">
-                    Maaf, belum ada data Categories.
+                <p
+                    class="text-lg text-gray-500 dark:text-gray-400 lg:text-center lg:text-xl"
+                >
+                    Maaf, Belum ada data aduan.
                 </p>
             </div>
         </div>
@@ -38,10 +67,9 @@
 </template>
 
 <script setup>
-import { defineProps } from "vue";
-import { Link } from '@inertiajs/vue3';
+import { Link } from "@inertiajs/vue3";
 
-const props = defineProps({
-    categories: Object,
+defineProps({
+    aduans: Object,
 });
 </script>
