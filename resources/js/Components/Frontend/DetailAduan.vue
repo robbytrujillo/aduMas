@@ -22,10 +22,57 @@
                             </p>
                         </div>
                         <div class="col-span-1 justify-self-end">
-                            <span class="px-2 py-1 text-red-600 border rounded-full" style="">
-                                
+                            <span
+                                class="px-2 py-1 text-red-600 border rounded-full"
+                                style="
+                                    background-color: #eaffed;
+                                    color: #27ae60;
+                                "
+                            >
+                                {{ lastStatus }}
+                            </span>
+                            <span
+                                class="px-2 py-1 text-red-600 border rounded-full"
+                                style="
+                                    background-color: #eaffed;
+                                    color: #27ae60;
+                                "
+                            >
+                                Public
                             </span>
                         </div>
+                    </div>
+
+                    <!-- content card -->
+                    <div
+                        class="p-4 border-b border-slate-200"
+                        style="min-height: 22rem"
+                    >
+                        <div class="grid-cols-3 gap-4 images">
+                            <div
+                                class="flex items-center justify-center col-span-1"
+                            >
+                                <img
+                                    :src="aduan.image"
+                                    class="object-cover w-full mx-auto h-70"
+                                    alt="image card"
+                                    style="cursor: pointer"
+                                />
+                            </div>
+                        </div>
+                        <div class="py-3 content-text">
+                            <p class="text-sm font-light text-gray-500">
+                                DESA {{ aduan.desa_kelurahan }},
+                                {{ aduan.created_at }}
+                            </p>
+                            <p
+                                class="pt-2 overflow-hidden text-sm text-ellipsis"
+                            >
+                                {{ aduan.isi_aduan }}
+                            </p>
+                        </div>
+
+                        <!-- Informasi Tags -->
                     </div>
                 </div>
             </div>
