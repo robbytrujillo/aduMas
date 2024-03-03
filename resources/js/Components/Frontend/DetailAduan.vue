@@ -73,6 +73,13 @@
                         </div>
 
                         <!-- Informasi Tags -->
+                        <div class="flex flex-wrap pt-4 text-sm font-semibold text-gray-500 tags">
+                            <span v-for="(tag, index) in aduan.tags" :key="index" class="px-2 py-1 border rounded-3xl border-slate-400" style="margin: 0.2rem;">
+                                <Link :href="route('tags.show', { slug: tag.slug })">#{{ tag.name }}</Link>
+                            </span>
+                        </div>
+                        
+                        <!-- Informasi Tags -->
                     </div>
                 </div>
             </div>
