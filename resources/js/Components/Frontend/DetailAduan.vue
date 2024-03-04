@@ -80,8 +80,21 @@
                         </div>
                         
                         <!-- Informasi Tags -->
+                        <div class="grid-cols-2 p-4 border-b border-slate-200">
+                            <div class="flex justify-between col-span-2 sm:col-span-1 lg:justify-start">
+                                
+                            </div>
+                            <div class="flex justify-between col-span-2 mt-4 ml-1 sm:col-span-1 sm:justify-self-end sm:items-center sm:gap-5 sm:mt-0">
+                                <p class="mr-2 text-xs font-light bg-red-50 text-slate-400">
+                                    <span id="count-mark-152887">Pelapor:</span> {{ Aduans.user.name }}
+                                </p>
+                            </div>
+                        </div>
+                        <!-- Content Card -->
                     </div>
                 </div>
+                
+                
             </div>
         </div>
     </div>
