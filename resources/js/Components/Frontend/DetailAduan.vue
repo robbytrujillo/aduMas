@@ -136,10 +136,67 @@
                         </ul>
                         <div class="pt-8">
                             <div class="h-56 overflow-y-auto">
-                                
                                 <!-- Looping untuk menampilkan setiap status -->
-                                <div v-for="(status, index) in aduan.status" :key="index" class="flex flex-row my-2">
-                                    
+                                <div
+                                    v-for="(status, index) in aduan.status"
+                                    :key="index"
+                                    class="flex flex-row my-2"
+                                >
+                                    <div
+                                        class="pt-1 basis-1/6 md:flex md:justify-center"
+                                    >
+                                        <i
+                                            v-if="
+                                                status.status ===
+                                                'Belum Ditangani'
+                                            "
+                                            class="text-red-600 fas fa-dot-circle"
+                                        ></i>
+                                        <i
+                                            v-if="
+                                                status.status === 'Verifikasi'
+                                            "
+                                            class="text-blue-600 fas fa-dot-circle"
+                                        ></i>
+                                        <i
+                                            v-if="status.status === 'Diproses'"
+                                            class="text-gray-600 fas fa-dot-circle"
+                                        ></i>
+                                        <i
+                                            v-if="status.status === 'Selesai'"
+                                            class="text-green-600 fas fa-dot-circle"
+                                        ></i>
+                                    </div>
+                                    <div class="basis-5/6">
+                                        <p class="font-medium text-pink-600">
+                                            {{ status.status }}
+                                        </p>
+                                        <p class="pb-1 text-xs font-semibold">
+                                            {{
+                                                formatStatusCreatedAt(
+                                                    status.created_at
+                                                )
+                                            }}
+                                        </p>
+                                        <p
+                                            class="pb-1 text-xs font-semibold"
+                                            v-if="status.user?.name"
+                                        >
+                                            <span
+                                                v-if="
+                                                    status.status ===
+                                                    'Belum Ditangani'
+                                                "
+                                                >Pelapor</span
+                                            >
+                                            {{ status.user.name }}
+                                        </p>
+                                        <div class="pb-1 text-xs">
+                                            <p>
+                                                <span class="pb-1 text-xs">{{ status.keterangan }}</span>
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -147,5 +204,16 @@
                 </div>
             </div>
         </div>
+        <aside id="blogs" aria-label="Related articles" class="py-8 bg-white lg:py-24 dark:bg-gray-900">
+            <div class="max-w-screen-xl px-4 mx-auto">
+                <h2 class="text-2xl font-bold text-gray-900 mb-9 dark:text-white">
+                    Aduan Terbaru
+                </h2>
+                <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+                    
+                </div>
+                
+            </div>
+        </aside>
     </div>
 </template>
