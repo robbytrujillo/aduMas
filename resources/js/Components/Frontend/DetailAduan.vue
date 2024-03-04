@@ -73,28 +73,78 @@
                         </div>
 
                         <!-- Informasi Tags -->
-                        <div class="flex flex-wrap pt-4 text-sm font-semibold text-gray-500 tags">
-                            <span v-for="(tag, index) in aduan.tags" :key="index" class="px-2 py-1 border rounded-3xl border-slate-400" style="margin: 0.2rem;">
-                                <Link :href="route('tags.show', { slug: tag.slug })">#{{ tag.name }}</Link>
+                        <div
+                            class="flex flex-wrap pt-4 text-sm font-semibold text-gray-500 tags"
+                        >
+                            <span
+                                v-for="(tag, index) in aduan.tags"
+                                :key="index"
+                                class="px-2 py-1 border rounded-3xl border-slate-400"
+                                style="margin: 0.2rem"
+                            >
+                                <Link
+                                    :href="
+                                        route('tags.show', { slug: tag.slug })
+                                    "
+                                    >#{{ tag.name }}</Link
+                                >
                             </span>
                         </div>
-                        
+
                         <!-- Informasi Tags -->
                         <div class="grid-cols-2 p-4 border-b border-slate-200">
-                            <div class="flex justify-between col-span-2 sm:col-span-1 lg:justify-start">
-                                
-                            </div>
-                            <div class="flex justify-between col-span-2 mt-4 ml-1 sm:col-span-1 sm:justify-self-end sm:items-center sm:gap-5 sm:mt-0">
-                                <p class="mr-2 text-xs font-light bg-red-50 text-slate-400">
-                                    <span id="count-mark-152887">Pelapor:</span> {{ Aduans.user.name }}
+                            <div
+                                class="flex justify-between col-span-2 sm:col-span-1 lg:justify-start"
+                            ></div>
+                            <div
+                                class="flex justify-between col-span-2 mt-4 ml-1 sm:col-span-1 sm:justify-self-end sm:items-center sm:gap-5 sm:mt-0"
+                            >
+                                <p
+                                    class="mr-2 text-xs font-light bg-red-50 text-slate-400"
+                                >
+                                    <span id="count-mark-152887">Pelapor:</span>
+                                    {{ Aduans.user.name }}
                                 </p>
                             </div>
                         </div>
                         <!-- Content Card -->
                     </div>
                 </div>
-                
-                
+                <div
+                    class="col-span-3 mb-6 lg:col-span-1 sm:col-span-3 lg:pl-2 font-inter"
+                >
+                    <div class="p-2 bg-white shadow sm:mb-6">
+                        <ul
+                            class="flex py-2 text-sm font-medium text-center text-gray-500 border-b dark:text-gray-400 border-slate-200"
+                            role="tablist"
+                        >
+                            <li class="w-full pr-1" role="presentation">
+                                <a
+                                    href="#"
+                                    class="inline-block w-full px-4 py-3 rounded-lg bg-red-50 hover:bg-red-50 hover:text-red-700 active"
+                                    id="progress-tab"
+                                    data-tabs-target="#progress"
+                                    type="button"
+                                    role="tab"
+                                    aria-controls="progress"
+                                    aria-selected="false"
+                                    aria-current="page"
+                                >
+                                    PROSES
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="pt-8">
+                            <div class="h-56 overflow-y-auto">
+                                
+                                <!-- Looping untuk menampilkan setiap status -->
+                                <div v-for="(status, index) in aduan.status" :key="index" class="flex flex-row my-2">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
