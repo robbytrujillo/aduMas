@@ -142,7 +142,9 @@
                     <div class="max-w-[370px] w-full">
                         <div class="flex-col gap-10">
                             
-                            
+                            <div class="max-w-[370px] w-full rounded-[10px] border border-gray-3 p-4 sm:p-7.5 lg:p-10">
+                                
+                            </div>
                         </div>
                     </div>
                 </div>
