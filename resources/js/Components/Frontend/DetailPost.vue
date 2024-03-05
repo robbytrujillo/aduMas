@@ -21,7 +21,7 @@
                         </h1>
 
                         <div
-                            class="flex flex-col sm:flex-row sm:items-center gap-3"
+                            class="flex flex-col gap-3 sm:flex-row sm:items-center"
                         >
                             <div class="flex flex-wrap items-center gap-4">
                                 <div
@@ -53,7 +53,7 @@
                                 </Link>
                             </div>
                         </div>
-                        <div class="mt-9 mb-5">
+                        <div class="mb-5 mt-9">
                             <p v-html="post.content"></p>
                         </div>
                         <div
@@ -64,7 +64,7 @@
                                 <li
                                     v-for="(data, index) in post.tags"
                                     :key="index"
-                                    class="text-dark hover:text-primary ease-in duration-200"
+                                    class="duration-200 ease-in text-dark hover:text-primary"
                                 >
                                     <Link
                                         :href="
@@ -137,6 +137,12 @@
                                     </Link>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="max-w-[370px] w-full">
+                        <div class="flex-col gap-10">
+                            
+                            
                         </div>
                     </div>
                 </div>
