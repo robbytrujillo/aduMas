@@ -143,6 +143,61 @@
                         <div class="flex-col gap-10">
                             
                             <div class="max-w-[370px] w-full rounded-[10px] border border-gray-3 p-4 sm:p-7.5 lg:p-10">
+                                <h4 class="mb-8 font-semibold text-custom-4 text-mix-blend-darken">
+                                    Recent Posts                                    
+                                </h4>
+                                <div class="flex flex-col gap-7.5">
+
+                                    <Link v-for="dataPost in popularPosts" :key="dataPost.id" 
+                                        :href="route('posts.detail', { slug: dataPost.slug })" class="flex mb-4 group">
+                                    <div class="max-w-[70px] w-full h-17.5 rounded-full mr-3">
+                                        <img :src="dataPost.image" alt="blog" />
+                                    </div>
+                                    <div>
+                                        <h5 class="text-sm font-medium duration-200 ease-in text-dark mb-1.5 group-hover:text-primary">
+                                            {{ dataPost.title }}
+                                        </h5>
+                                        <div class="flex items-center gap-2">
+                                            <span class="flex w-[3px] h-[3px] rounded-full bg-dark-2"></span>
+                                        </div>
+                                    </div>
+                                    </Link>
+                                </div>
+                            </div>
+
+                            <div class="max-w-[370px] w-full rounded-[10px] border border-gray-3 p-4 sm:p-7.5 lg:p-10">
+                                <h4 class="mb-8 font-semibold text-costum-4 text-dark">
+                                    Categories
+                                </h4>
+                                <div class="flex-col gap-3">
+                                    
+                                    <Link :href="route('posts.category', { slug: dataCategory.slug })" v-for="dataCategory in categorycounts" 
+                                        :key="dataCategory.id" class="flex items-center justify-between gap-2 group">
+                                        <p class="duration-200 ease-in group-hover:text-dark">
+                                            {{ dataCategory.name }}
+                                        </p>
+                                        <span class="flex items-center justify-center max-w-[32px] w-full h-8 rounded-full text-custom-sm border border-gray-3
+                                        ease-in duration-200 group-hover:text-pink-900 group-hover:bg-dark group-hover:border-dark">
+                                            {{ dataCategory.total }}
+                                        </span>
+                                    </Link>
+                                </div>
+                            </div>
+                            <div class="max-w-[370px] w-full rounded-[10px] border border-gray-3 p-4 sm:p-7.5 lg:p-10">
+                                <h4 class="mb-8 font-semibold text-custom-4 text-dark">
+                                    Tags
+                                </h4>
+                                <div class="flex flex-col gap-3">
+
+                                    <Link :href="route('posts.tags', { slug: dataTag.slug })" v-for="dataTag in tagCounts" :key="dataTag.id"
+                                        class="flex items-center justify-between gap-2 group">
+                                        <p class="duration-200 ease-in group-hover: text-dark">
+                                            #{{ dataTag.name }}
+                                        </p>
+                                        <span class="flex items-center justify-center max-w-[32px] w-full h-8 rounded-full text-custom=sm border border-gray-3 
+                                            ease-in duration-200 group-hover: text-pink-900 group-hover: bg-dark group-hover: border-dark">
+                                </Link>
+                                </div>
                                 
                             </div>
                         </div>
