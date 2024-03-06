@@ -225,7 +225,7 @@ const getCurrentUrl = () => {
 
 const shareOnFacebook = () => {
     const url = getCurrentUrl();
-    window.opem(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
 };
 
 const shareOnTwitter = () => {
@@ -234,5 +234,9 @@ const shareOnTwitter = () => {
     window.open(`http://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`, '_blank');
 };
 
-
+const shareOnLinkedin = () => {
+    const url = getCurrentUrl();
+    const title = 'Check out this post!';
+    window.open(`https://www.linkedin.com/shareArticle?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`, '_blank');
+};
 </script>
