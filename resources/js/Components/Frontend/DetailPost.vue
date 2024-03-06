@@ -195,10 +195,10 @@
                                             #{{ dataTag.name }}
                                         </p>
                                         <span class="flex items-center justify-center max-w-[32px] w-full h-8 rounded-full text-custom=sm border border-gray-3 
-                                            ease-in duration-200 group-hover: text-pink-900 group-hover: bg-dark group-hover: border-dark">
-                                </Link>
+                                            ease-in duration-200 group-hover: text-pink-900 group-hover: bg-dark group-hover: border-dark" />
+                                            {{ dataTag.total }}
+                                        </Link>
                                 </div>
-                                
                             </div>
                         </div>
                     </div>
@@ -207,3 +207,32 @@
         </section>
     </aside>
 </template>
+
+<script setup>
+import { defineProps } from "vue";
+import { Link, Head } from '@inertiajs/vue3';
+
+const props = defineProps({
+    post: Object,
+    popularPosts: Object,
+    categoryCounts: Object,
+    tagCounts: Object,
+});
+
+const getCurrentUrl = () => {
+    return window.localStorage.href;
+};
+
+const shareOnFacebook = () => {
+    const url = getCurrentUrl();
+    window.opem(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+};
+
+const shareOnTwitter = () => {
+    const url = getCurrentUrl();
+    const text = 'Check out this post!';
+    window.open(`http://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`, '_blank');
+};
+
+
+</script>
