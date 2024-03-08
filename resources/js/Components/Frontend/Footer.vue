@@ -146,7 +146,9 @@
                     </div>
                 </a>
 
-                <div class=""></div>
+                <div class="flex my-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="inliinline-block" fill="#ffff" stroke="currentColor"></svg>
+                </div>
             </div>
         </div>
     </div>
