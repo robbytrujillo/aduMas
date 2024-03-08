@@ -184,5 +184,39 @@
     </div>
 
     <!-- Link Lain -->
-    
+    <div class="col-span-8 ml-2 sm:col-span-3 lg:col-span-2">
+        <p class="mt-6 font-bold text-l">LAIN LAIN</p>
+        <div class="grid grid-cols-1 mt-3">
+            <div class="col-span-1">
+                <a :href="footerData.faqs.link_url">
+                    <div class="flex my-3">
+                        <p class="ml-0 text-xs">
+                            {{ footerData.faqs.nama_halaman }}
+                        </p>
+                    </div>
+                </a>
+                <a :href="footerData.privacy.link_url">
+                    <div class="flex my-3">
+                        <p class="ml-0 text-xs">
+                            {{ footerData.privacy.nama_halaman }}
+                        </p>
+                    </div>
+                </a>
+                <div class="flex my-3">
+                    <a href="" target="_blank">
+                        <div class="flex my-3">
+                            <img src="" alt="Google Play Store">
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
+
+<script setup>
+import { defineProps } from "vue";
+const props = defineProps({
+    footerData: Object,
+});
+</script>
