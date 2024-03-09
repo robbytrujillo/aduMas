@@ -64,5 +64,10 @@ watchEffect(() => {
     }
 });
 
+const selected = ref([]);
 
+// Fungsi untuk mengubah selected menjadi form.tags
+const updateTags = (newValues => {
+    form.tags = newValues.map(tag => tag.id);
+})
 </script>
