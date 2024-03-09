@@ -69,5 +69,24 @@ const selected = ref([]);
 // Fungsi untuk mengubah selected menjadi form.tags
 const updateTags = (newValues => {
     form.tags = newValues.map(tag => tag.id);
-})
+});
+
+// Gunakan watch untuk memantau perubahan pada selected 
+watch(selected, (newValues) => {
+    updateTags(newValues);
+});
+
+watchEffect(() => {
+    fetchDistricts();
+});
+
+watchEffect(() => {
+    fetchVillages();
+});
+
+const imageUrl = computed(() => {
+    if (form.image) {
+        return URL.createObjectURL(form.image);
+    }
+});
 </script>
