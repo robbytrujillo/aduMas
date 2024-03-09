@@ -49,4 +49,20 @@ const fetchVillage = async () => {
         villages.value = [];
     }
 };
+
+watchEffect(() => {
+    const selectedDistrictObj = districts.value.find(district => district.id === form.selectedDistrict);
+    if (selectedDistrictObj) {
+        form.selectedDistrictName = selectedDistrictObj.name;
+    }
+});
+
+watchEffect(() => {
+    const selectedVillageObj = villages.value.find(village => village.id === form.selectedVillage)
+    if (selectedVillageObj) {
+        form.selectedVillageName = selectedVillageObj.name;
+    }
+});
+
+
 </script>
