@@ -99,6 +99,8 @@ const imageUrl = computed(() => {
                     <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                         <div class="sm:col-span-2">
                             <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Judul Aduan</label>
+                            <input v-model="form.title" class="w-full p-3 text-sm border-pink-600 rounded-lg focus:ring-pink-500 focus:border-pink-500" type="text" placeholder="Jalan Rusak, Layanan kurang bagus" id="name" />
+                                <InputError class="mt-2" :message="form.errors.title" />
                         </div>
                     </div>
                 </form>
