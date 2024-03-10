@@ -90,3 +90,18 @@ const imageUrl = computed(() => {
     }
 });
 </script>
+
+<template>
+    <section class="bg-gray-100 dark:bg-gray-900">
+        <div class="max-w-2xl px-4 py-8 mx-auto lg:py-16">
+            <h2 class="mb-4 text-xl font-bold text-center text-pink-600 dark:text-white">Form Aduan</h2>
+                <form @submit.prevent="form.post(route('aduan.store'))">
+                    <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+                        <div class="sm:col-span-2">
+                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Judul Aduan</label>
+                        </div>
+                    </div>
+                </form>
+        </div>
+    </section>
+</template>
