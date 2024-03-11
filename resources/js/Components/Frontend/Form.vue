@@ -260,7 +260,13 @@ const imageUrl = computed(() => {
                         </label>
                         <textarea v-model="form.isi_aduan" id="description" rows="8" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-pink-300 focus:ring-pink-500 focus:border-pink-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Masukkan isi aduan dan lolasi/alamat yang ingin dilaporkan, dengan lengkap dan jelas">
                         </textarea>
+                        <InputError class="mt-2" :message="form.errors.isi_aduan" />
                     </div>
+                </div>
+                <div class="flex items-center justify-end mt-4">
+                    <PrimaryButton v-if="$page.props.auth.user" class="m-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                    </PrimaryButton>
+                    <p v-else class="mt-3 text-red-500">Silahkan login/register untuk dapat melaporkan.</p>
                 </div>
             </form>
         </div>
