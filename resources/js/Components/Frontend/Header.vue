@@ -10,4 +10,10 @@ onMounted(() => {
         return window.scrollY > 50 ? setScrollBg(true) : setScrollBg(false);
     });
 });
+
+defineProps({
+    canLogin: Boolean,
+    laravelVersion: String,
+    phpVersion: String,
+});
 </script>
