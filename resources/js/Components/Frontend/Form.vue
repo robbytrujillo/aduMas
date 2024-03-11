@@ -122,11 +122,12 @@ const imageUrl = computed(() => {
                                     </p>
                                     <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
                                 </div>
-                                <input id="image" type="file" class="hidden mt-1 block w-full" />
+                                <input id="image" type="file" class="hidden mt-1 block w-full" @input="form.image = $event.target.files[0]" />
                                 <img :src="imageUrl" class="h-25 w-20 object-contain" v-if="imageUrl" />
                             </label>
                             <InputError class="mt-2" :message="form.errors.image" />
                         </div>
+                        
                     </div>
                 </form>
         </div>
