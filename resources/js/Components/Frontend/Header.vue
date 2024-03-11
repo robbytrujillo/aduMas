@@ -17,3 +17,17 @@ defineProps({
     phpVersion: String,
 });
 </script>
+<template>
+    <header class="fixed w-full">
+        <nav
+            :class="{
+                'bg-white border-2 border-b-pink-600 rounded-b-lg py-2.5 dark:bg-gray-900':
+                    scrollBg,
+                '': !scrollBg,
+            }"
+            class="py-2.5 border-gray-200 dark:bg-gray-900"
+        >
+            <div class="flex flex-wrap"></div>
+        </nav>
+    </header>
+</template>
