@@ -25,7 +25,7 @@ const villages = ref([]);
 const fetchDistricts = async () => {
     try {
         const response = await fetch(
-            "https://kurniaandi.github.io/api-wilayah-indonesia/api/districts/3321.json"
+            "https://kurniaandi.github.io/api-wilayah-indonesia/api/districts/3201.json"
         );
         const data = await response.json();
         districts.value = data;
@@ -255,18 +255,37 @@ const imageUrl = computed(() => {
                         />
                     </div>
                     <div class="sm:col-span-2">
-                        <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        <label
+                            for="description"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                        >
                             Isi Aduan
                         </label>
-                        <textarea v-model="form.isi_aduan" id="description" rows="8" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-pink-300 focus:ring-pink-500 focus:border-pink-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Masukkan isi aduan dan lolasi/alamat yang ingin dilaporkan, dengan lengkap dan jelas">
+                        <textarea
+                            v-model="form.isi_aduan"
+                            id="description"
+                            rows="8"
+                            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-pink-300 focus:ring-pink-500 focus:border-pink-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            placeholder="Masukkan isi aduan dan lolasi/alamat yang ingin dilaporkan, dengan lengkap dan jelas"
+                        >
                         </textarea>
-                        <InputError class="mt-2" :message="form.errors.isi_aduan" />
+                        <InputError
+                            class="mt-2"
+                            :message="form.errors.isi_aduan"
+                        />
                     </div>
                 </div>
                 <div class="flex items-center justify-end mt-4">
-                    <PrimaryButton v-if="$page.props.auth.user" class="m-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                    <PrimaryButton
+                        v-if="$page.props.auth.user"
+                        class="m-4"
+                        :class="{ 'opacity-25': form.processing }"
+                        :disabled="form.processing"
+                    >
                     </PrimaryButton>
-                    <p v-else class="mt-3 text-red-500">Silahkan login/register untuk dapat melaporkan.</p>
+                    <p v-else class="mt-3 text-red-500">
+                        Silahkan login/register untuk dapat melaporkan.
+                    </p>
                 </div>
             </form>
         </div>
