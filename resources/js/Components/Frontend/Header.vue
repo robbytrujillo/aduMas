@@ -27,7 +27,12 @@ defineProps({
             }"
             class="py-2.5 border-gray-200 dark:bg-gray-900"
         >
-            <div class="flex flex-wrap"></div>
+            <div class="flex flex-wrap item-center justify-between max-w-screen-xl px-4 mx-auto">
+                <Link :href="route('home')" class="flex items-center">
+                    <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white text-pink-600">Lapor</span>
+                    <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white text-black">Kab!</span>
+                </Link>
+            </div>
         </nav>
     </header>
 </template>
