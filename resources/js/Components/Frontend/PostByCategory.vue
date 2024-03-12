@@ -94,11 +94,25 @@ const truncateText = (text) => {
                                     }}
                                 </p>
                             </Link>
-                            <div class="">
-                                
+                            <div class="grid grid-cols-3">
+                                <div class="col-span-3 sm:col-span-1">
+                                    <span class="rounded-full border text-red-600 px-2 py-1 sm:px-2 sm:py-1 text-sm" style="background-color: #ddf2fe; color: #2d9cdb;">
+                                    Dilihat {{ post.views_count }} kali
+                                    </span>
+                                </div>
+                                <div class="col-span-3 sm:col-span-2 sm:justify-self-end flex justify-end pt-4">
+                                    <span class="text-gray-400 text-xs font-light mr-2">
+                                        <span id="count-mark-152887">Author:</span> {{ post.user.name }}
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
+                </template>
+                <template v-else>
+                    <p class="text-center text-gray-500 text-lg font-semibold">
+                        Maaf, data post berdasarkan tag yang dipilih masih kosong.
+                    </p>
                 </template>
             </div>
         </div>
