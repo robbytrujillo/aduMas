@@ -23,14 +23,14 @@ const formatStatusCreatedAt = (createdAt) => {
 </script>
 <template>
     <Head title="Data Tags" />
-    <div class="col-span-3 sm:px-16 sm:py-6 py-4 grid">
-        <div class="bg-white shadow mt-10">
+    <div class="grid col-span-3 py-4 sm:px-16 sm:py-6">
+        <div class="mt-10 bg-white shadow">
             <!-- Form header card -->
             <div class="flex flex-wrap p-4 border-b border-slate-200">
-                <div class="font-semibold text-base">
+                <div class="text-base font-semibold">
                     Aduan berdasarkan tag
                     <span
-                        class="rounded-3xl border border-slate-400 px-2 py-1"
+                        class="px-2 py-1 border rounded-3xl border-slate-400"
                         style="margin: 0.2rem"
                     >
                         #{{ Tags.name }}
@@ -38,6 +38,11 @@ const formatStatusCreatedAt = (createdAt) => {
                 </div>
             </div>
             <!-- List of all aduan -->
+            <div class="px-3 card-body">
+                <template v-if="">
+                    
+                </template>
+            </div>
         </div>
     </div>
 </template>
