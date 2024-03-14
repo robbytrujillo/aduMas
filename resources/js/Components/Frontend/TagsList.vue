@@ -40,7 +40,8 @@ const formatStatusCreatedAt = (createdAt) => {
             <!-- List of all aduan -->
             <div class="px-3 card-body">
                 <template v-if="aduans.data && aduans.data.length > 0">
-                    <div v-for="(aduan, index) in aduans.data " :key="index" class="flex aduan sm:flex-nowrap">
+                    <div v-for="(aduan, index) in aduans.data " :key="index" class="flex flex-wrap px-3 py-4 border-b aduan sm:flex-nowrap border-slate-200 for-inter">
+                        <
                     </div>
                     
                 </template>
