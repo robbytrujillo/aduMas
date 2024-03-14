@@ -83,18 +83,37 @@ const formatStatusCreatedAt = (createdAt) => {
                             </Link>
                             <div class="grid grid-cols-3">
                                 <div class="col-span-3 sm:col-span-1">
-                                    <span class="px-2 py-1 text-sm text-red-600 border rounded-full sm:px-2 sm:py-1" style="background-color: #ddf2fe; color: #2d9cdb;"> 
+                                    <span
+                                        class="px-2 py-1 text-sm text-red-600 border rounded-full sm:px-2 sm:py-1"
+                                        style="
+                                            background-color: #ddf2fe;
+                                            color: #2d9cdb;
+                                        "
+                                    >
                                         {{ aduan.status.status }}
                                     </span>
                                 </div>
-                                <div class="flex justify-end col-span-3 pt-4 sm:col-span-2 sm:justify-self-end">
-                                    <span class="mr-2 text-xs font-light text-gray-400">
-                                        <span id="count-mark-152887">Pelapor:</span> {{ aduan.user.name }}
+                                <div
+                                    class="flex justify-end col-span-3 pt-4 sm:col-span-2 sm:justify-self-end"
+                                >
+                                    <span
+                                        class="mr-2 text-xs font-light text-gray-400"
+                                    >
+                                        <span id="count-mark-152887"
+                                            >Pelapor:</span
+                                        >
+                                        {{ aduan.user.name }}
                                     </span>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </template>
+                <template v-else>
+                    <p class="text-lg font-semibold text-center text-gray-500">
+                        Maaf, data aduan berdasarkan tag yang dipilih masih
+                        kosong.
+                    </p>
                 </template>
             </div>
         </div>
