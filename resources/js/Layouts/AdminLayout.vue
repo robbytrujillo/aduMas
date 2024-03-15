@@ -10,13 +10,13 @@ const { hasRole } = usePermission();
     <div class="w-full h-full">
         <aside class="">
             <div>
-                <div class="-mx-6 px-6 py-4">
+                <div class="px-6 py-4 -mx-6">
                     <Link href="/" title="home">
                         <h1 class=""><span class="text-pink-600"> {{ $page.props.auth.UserActivation.name }}</span>
                         </h1>
                     </Link>
                 </div>
-                <ul class="space-y-2 tracking-wide mt-8">
+                <ul class="mt-8 space-y-2 tracking-wide">
                     <template v-if="hasRole('admin')">
                         <li>
                             <SidebarLink :href="route('admin.index')" :active="route().current('admin.index')">
@@ -75,7 +75,9 @@ const { hasRole } = usePermission();
                             </SidebarLink>
                         </li>
                         <li>
-                            
+                            <SidebarLink :href="route('categories.index')" aria-label="dashboard">
+                                
+                            </SidebarLink>
                         </li>
                     </template>
                 </ul>
