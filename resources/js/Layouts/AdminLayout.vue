@@ -105,10 +105,35 @@ const { hasRole } = usePermission();
                             <span class="-mr-1 font-medium">Aduan</span>
                         </SidebarLink>
                     </li>
-                    
+                    <li v-if="hasRole('user')">
+                        <SidebarLink :href="route('admin.index')" aria-label="dashboard" :active="route().current('admin.index')">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                            </svg>
+                            <span class="-mr-1 font-medium">Dashboard</span>
+                        </SidebarLink>
+                        <SidebarLink :href="route('aduan.user')" aria-label="dashboard" :active="route().current('aduan.user')">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M3 3v1.5M3 21v-6m0 0l2.77-.693a9 9 0 016.208.682l.108.054a9 9 0 006.086.71l3.114-.732a48.524 48.524 0 01-.005-10.499l-3.11.732a9 9 0 01-6.085-.711l-.108-.054a9 9 0 00-6.208-.682L3 4.5M3 15V4.5" />
+                            </svg>
+                            <span class="-mr-1 font-medium">Aduanku</span>
+                        </SidebarLink>
+                    </li>
                 </ul>
             </div>
+            <div class="px-6 -mx-6 pt-4 flex justify-between items-center border-t">
+                <Link :href="route('logout')" method="post" as="button" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                    </svg>
+                    <span class="text-pink-600 group-hover:text-black">Logout</span> 
+                </Link>
+            </div>
         </aside>
+        
     </div>
 </template>
 
