@@ -75,8 +75,8 @@ const { hasRole } = usePermission();
                             </SidebarLink>
                         </li>
                         <li>
-                            <SidebarLink :href="route('categories.index')" aria-label="dashboard">
-                                
+                            <SidebarLink :href="route('categories.index')" aria-label="dashboard" :active="route().current('categories.index')">
+                                <svg class="-ml-1 h-6 w-6" viewBox="0 0 24 24" fill="none"></svg>
                             </SidebarLink>
                         </li>
                     </template>
