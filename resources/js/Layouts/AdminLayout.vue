@@ -84,6 +84,28 @@ const { hasRole } = usePermission();
                             </SidebarLink>
                         </li>
                     </template>
+                    <li v-if="hasRole('moderator')">
+                        <SidebarLink :href="route('admin.index')" aria-label="dashboard" :active="route().current('admin.index')">
+                            <svg class="-nl-1 h-6 w-6" viewBox="0 0 24 24" fill="none">
+                                <path
+                                    d="M6 8a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V8ZM6 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-1Z"
+                                    class="fill-current text-cyan-400 dark:fill-slate-600"></path>
+                                <path d="M13 8a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2V8Z"
+                                    class="fill-current text-cyan-200 group-hover:text-cyan-300"></path>
+                                <path d="M13 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-1Z"
+                                    class="fill-current group-hover:text-sky-300"></path>
+                            </svg>
+                            <span class="-mr-1 font-medium">Dashboard</span>
+                        </SidebarLink>
+                        <SidebarLink :href="route('aduan.index')" aria-label="dashboard" :active="route().current('aduan.index')">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M3 3v1.5M3 21v-6m0 0l2.77-.693a9 9 0 016.208.682l.108.054a9 9 0 006.086.71l3.114-.732a48.524 48.524 0 01-.005-10.499l-3.11.732a9 9 0 01-6.085-.711l-.108-.054a9 9 0 00-6.208-.682L3 4.5M3 15V4.5" />
+                            </svg>
+                            <span class="-mr-1 font-medium">Aduan</span>
+                        </SidebarLink>
+                    </li>
+                    
                 </ul>
             </div>
         </aside>
